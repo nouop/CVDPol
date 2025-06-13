@@ -53,7 +53,7 @@
 graph LR
     A[用户界面] --> B[Flask API]
     B --> C[集成预测模型]
-    C --> A[用户界面]
+    C --> B[Flask API]
     B --> A
 ```
 

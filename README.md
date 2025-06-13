@@ -1,5 +1,5 @@
 # 基于神经网络集成学习的心血管疾病风险预测系统
-演示网站:[cvdp.nouop.com][https://cvdp.nouop.com]
+演示网站:[cvdp.nouop.com](https://cvdp.nouop.com)
 ## 研究背景
 
 心血管疾病已成为我国人口的第一死因，据卫生部统计数据显示：

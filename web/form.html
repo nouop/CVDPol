@@ -1,0 +1,301 @@
+<!-- form.html - 表单页 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗评估表</title>
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --bg-color: #F8FAFF;
+            --text-color: #1F2937;
+            --input-bg: #F9FAFB;
+            --border-color: #E0E5ED;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: var(--bg-color);
+        }
+
+        .header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #6B7280;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h2 {
+            color: var(--text-color);
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: #4B5563;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-wrapper {
+            position: relative;
+            max-width: 400px; /* 新增：限制输入框最大宽度 */
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--input-bg);
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .arrow-icon {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #A0AEC0;
+            font-size: 16px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .btn-primary {
+            padding: 15px 40px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .btn-primary:hover {
+            background: #ff5252;
+        }
+
+        /* 响应式断点 */
+        @media (max-width: 768px) {
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+            .input-wrapper {
+                max-width: 100%;
+            }
+            .btn-primary {
+                position: relative;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">❤️‍🔥 CVDP</div>
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="form.html" class="active">评估</a>
+            <a href="#">关于</a>
+        </nav>
+    </div>
+
+    <div class="content-container">
+        <h2>医疗评估表</h2>
+
+        <form id="heartForm">
+            <div class="form-group">
+                <div>
+                    <label for="age">年龄 (岁)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="age" placeholder="请输入年龄" required>
+                        <span class="arrow-icon">📅</span>
+                    </div>
+                </div>
+                <div>
+                    <label for="sex">性别</label>
+                    <select id="sex" required>
+                        <option value="">请选择</option>
+                        <option value="0">女性</option>
+                        <option value="1">男性</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="height">身高 (cm)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="height" placeholder="例如：170" required>
+                        <span class="arrow-icon">↑↓</span>
+                    </div>
+                </div>
+                <div>
+                    <label for="weight">体重 (kg)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="weight" placeholder="例如：70" required>
+                        <span class="arrow-icon">↑↓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="systolic">收缩压 (mmHg)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="systolic" placeholder="例如：120" required>
+                        <span class="arrow-icon">↑↓</span>
+                    </div>
+                </div>
+                <div>
+                    <label for="diastolic">舒张压 (mmHg)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="diastolic" placeholder="例如：80" required>
+                        <span class="arrow-icon">↑↓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="cholesterol">胆固醇 (正常值:3.12-5.17mmol/L)  </label>
+                    <!-- <div class="input-wrapper">
+                        <input type="text" id="cholesterol" placeholder="例如：200" required>
+                        <span class="arrow-icon">↑↓</span>
+                    </div> -->
+                    <select id="cholesterol" required>
+                        <option value="">请选择</option>
+                        <option value="1">正常</option>
+                        <option value="2">高于正常</option>
+                        <option value="3">远高于正常</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="gluc">血糖 (正常值:3.9-11.1mmol/L)</label>
+                    <!-- <div class="input-wrapper">
+                        <input type="text" id="gluc" placeholder="例如：90" required>
+                        <span class="arrow-icon">↑↓</span>
+                    </div> -->
+                    <select id="gluc" required>
+                        <option value="">请选择</option>
+                        <option value="1">正常</option>
+                        <option value="2">高于正常</option>
+                        <option value="3">远高于正常</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="smoke">
+                    <label for="smoke">是否吸烟</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="alcohol">
+                    <label for="alcohol">是否饮酒</label>
+                </div>
+            </div>
+
+            <button class="btn-primary" type="submit">获取结果</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('heartForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                age: parseInt(document.getElementById('age').value) * 365,
+                sex: parseInt(document.getElementById('sex').value) || 0,
+                height: parseInt(document.getElementById('height').value) || 0,
+                weight: parseInt(document.getElementById('weight').value) || 0,
+                systolic: parseInt(document.getElementById('systolic').value) || 0,
+                diastolic: parseInt(document.getElementById('diastolic').value) || 0,
+                cholesterol: parseInt(document.getElementById('cholesterol').value) || 0,
+                gluc: parseInt(document.getElementById('gluc').value) || 0,
+                smoke: document.getElementById('smoke').checked ? 1 : 0,
+                alco: document.getElementById('alcohol').checked ? 1 : 0,
+                exercise: 0 // 默认值
+            };
+
+            fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.location.href = `result.html?risk=${data.result}`;
+            })
+            .catch(error => {
+                console.error('错误:', error);
+                alert('提交失败，请检查输入数据');
+            });
+        });
+    </script>
+</body>
+</html>

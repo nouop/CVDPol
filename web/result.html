@@ -1,0 +1,265 @@
+<!-- result.html - 结果页 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评估结果</title>
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #7D3CFF;
+            --accent-color: #2A5CAA;
+            --bg-color: #F8FAFF;
+            --text-color: #1F2937;
+            --input-bg: #F9FAFB;
+            --border-color: #E0E5ED;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: var(--bg-color);
+        }
+
+        .header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #6B7280;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--text-color);
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .heart-icon {
+            width: 100px;
+            height: 100px;
+            background: #FBE4E4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .heart-icon span {
+            color: var(--primary-color);
+            font-size: 48px;
+        }
+
+        .risk-level {
+            margin-top: 20px;
+            position: relative;
+            height: 30px;
+            background: #F3F4F6;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .risk-bar {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+
+        .risk-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #6B7280;
+            font-size: 14px;
+        }
+
+        .advice {
+            background: #F9FAFB;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .advice-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .advice-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .alert-box {
+            background: #EDF2FF;
+            color: var(--accent-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            padding: 12px 24px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #234e99;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">❤️‍🔥 CVDP</div>
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="form.html" class="active">评估</a>
+            <a href="#">关于</a>
+        </nav>
+    </div>
+
+    <div class="content-container">
+        <h2>评估结果</h2>
+
+        <div class="result-header">
+            <div class="heart-icon">
+                <span>❤️‍🔥</span>
+            </div>
+            <h3 id="risk-title">正在分析...</h3>
+            <p id="risk-desc">加载中...</p>
+        </div>
+
+        <div class="risk-level">
+            <div class="risk-bar" id="risk-bar"></div>
+        </div>
+        <div class="risk-text">
+            <span>低风险</span>
+            <span>高风险</span>
+        </div>
+        <p style="text-align: center; margin-top: 10px;" id="confidence"></p>
+
+        <div class="advice" id="advice">
+            <h3>建议：</h3>
+            <div class="advice-item">
+                <span class="advice-icon">⚠️</span>
+                <p id="advice-text">正在加载建议...</p>
+            </div>
+        </div>
+
+        <div class="alert-box">
+            <h3>重要提示：</h3>
+            <p>此评估仅用于信息参考，不应视为医疗建议。请始终咨询合格的医疗专业人员以获得准确的诊断和治疗建议。</p>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn-secondary" onclick="window.location.href='form.html'">新评估</button>
+            <button class="btn-secondary" onclick="window.location.href='index.html'">返回首页</button>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const riskLevel = urlParams.get('risk');
+        const riskBar = document.getElementById('risk-bar');
+        const riskTitle = document.getElementById('risk-title');
+        const riskDesc = document.getElementById('risk-desc');
+        const confidence = document.getElementById('confidence');
+        const adviceText = document.getElementById('advice-text');
+
+        if (riskLevel === '0') {
+            // 低风险
+            riskBar.style.width = '5%';
+            riskTitle.textContent = '低风险';
+            riskTitle.style.color = '#28A745';
+            riskDesc.innerHTML = '您的心血管健康状况良好，建议继续保持健康的生活方式。';
+            confidence.textContent = '';
+            adviceText.innerHTML = '继续保持健康饮食，定期进行身体检查，保持适量运动与充足睡眠。';
+        } else if (riskLevel === '1') {
+            // 中等风险
+            riskBar.style.width = '35%';
+            riskTitle.textContent = '中等风险';
+            riskTitle.style.color = 'rgb(222, 214, 60)';
+            riskDesc.innerHTML = '您的心血管健康状况一般，建议及时改善生活作息！';
+            confidence.textContent = '';
+            adviceText.innerHTML = '关注饮食健康，定期进行身体检查，保持适量运动与充足睡眠。';
+        } else if (riskLevel === '2') {
+            // 高风险
+            riskBar.style.width = '65%';
+            riskTitle.textContent = '高风险';
+            riskTitle.style.color = 'rgb(226, 118, 47)';
+            riskDesc.innerHTML = '检测到较高的心血管疾病风险，建议尽快咨询专业医生进行详细检查！';
+            confidence.textContent = '';
+            adviceText.innerHTML = '建议预约心血管专科医生，进行完整的心血管检查，严格控制血压和胆固醇水平。';
+        } else if (riskLevel === '3') {
+            // 极高风险
+            riskBar.style.width = '95%';
+            riskTitle.textContent = '极高风险';
+            riskTitle.style.color = '#DC3545';
+            riskDesc.innerHTML = '检测到极高的心血管疾病风险，建议尽快咨询专业医生进行详细检查！！';
+            confidence.textContent = '';
+            adviceText.innerHTML = '建议预约心血管专科医生，进行完整的心血管检查，严格控制血压和胆固醇水平。';
+        } else {
+            // 错误处理
+            riskBar.style.width = '0%';
+            riskTitle.textContent = '数据错误';
+            riskTitle.style.color = '#6B7280';
+            riskDesc.innerHTML = '无法获取评估结果，请返回重新填写表单。';
+            confidence.textContent = '置信度：N/A';
+            adviceText.innerHTML = '请检查网络连接或稍后重试。';
+        }
+    </script>
+</body>
+</html>

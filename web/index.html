@@ -1,0 +1,177 @@
+<!-- index.html - 首页 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心血管疾病风险评估</title>
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --bg-color: #F8FAFF;
+            --text-color: #1F2937;
+            --sub-text: #6B7280;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: var(--bg-color);
+        }
+
+        .header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #E0E5ED;
+            background: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--sub-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .feature {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            padding: 15px 40px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #ff5252;
+        }
+
+        .footer {
+            margin-top: 80px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #E0E5ED;
+            background: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            color: var(--sub-text);
+        }
+
+        .footer-links a {
+            color: #FFB6C1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">❤️‍🔥 CVDP</div>
+        <nav>
+            <a href="index.html" class="active">首页</a>
+            <a href="form.html">评估</a>
+            <a href="#">关于</a>
+        </nav>
+    </div>
+
+    <div class="hero-section">
+        <h1>心血管疾病风险评估</h1>
+        <p style="max-width: 700px; margin: 0 auto 40px;">早期检测对预防心血管疾病至关重要。我们的神经网络模型可帮助您预测风险，为您提供安全保障。</p>
+        
+        
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>高级分析</h3>
+                <p>利⽤神经⽹络分析数据集中的多个⻛险因素,建⽴多个模型投票预测。</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⏰</div>
+                <h3>高效推算</h3>
+                <p>利⽤Tensorflow模型框架加快神经⽹络计算，实现较短时间内推算出较为可靠的结果。</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📑</div>
+                <h3>提出建议</h3>
+                <p>综合分析您的⻛险因素，评估⼼⾎管状况并提供建议，为预防⼼⾎管疾病加油助⼒。</p>
+            </div>
+        </div>
+
+        <a href="form.html" class="btn-primary">开始评估</a>
+        
+    </div>
+
+    <div class="footer">
+        <div>
+            <span>CVDP © 2025</span>
+        </div>
+        <div class="footer-links">
+            <a href="https://www.bilibili.com/video/BV15LMBzKEpQ/?share_source=copy_web&vd_source=da9dd4b98db740008b64be08c2b8a6ba">B站</a>
+            <a href="#">Github</a>
+        </div>
+    </div>
+</body>
+</html>
